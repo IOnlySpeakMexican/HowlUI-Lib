@@ -1,6 +1,9 @@
 local WindowTable = {} 
 
 function WindowTable:CreateWindow(uiname)
+	if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
+        	game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
+    	end
 	local ScreenGui = Instance.new("ScreenGui")
 	local main = Instance.new("TextLabel")
 	local BCG = Instance.new("Frame")
@@ -21,11 +24,7 @@ function WindowTable:CreateWindow(uiname)
 
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    ScreenGui.Name = "HowlUiLIb"
-
-    if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
-        game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
-    end
+    	ScreenGui.Name = "HowlUiLIb"
 
 	main.Name = "main"
 	main.Parent = ScreenGui
