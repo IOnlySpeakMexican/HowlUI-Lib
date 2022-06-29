@@ -1,9 +1,6 @@
 local WindowTable = {} 
 
 function WindowTable:CreateWindow(uiname)
-	if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
-        	game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
-    	end
 	local ScreenGui = Instance.new("ScreenGui")
 	local main = Instance.new("TextLabel")
 	local BCG = Instance.new("Frame")
@@ -24,7 +21,11 @@ function WindowTable:CreateWindow(uiname)
 
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    	ScreenGui.Name = "HowlUiLIb"
+    ScreenGui.Name = "HowlUiLIb"
+
+    if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
+        game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
+    end
 
 	main.Name = "main"
 	main.Parent = ScreenGui
@@ -76,13 +77,25 @@ function WindowTable:CreateWindow(uiname)
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0.00999999978, 1)
 
-	local TabHandler = {}
+	local ButtonHandler = {}
 
-	function TabHandler:CreateTab(tabname)
-		tabname = tabname or "New Tab"
+	function ButtonHandler:CreateButton(btntext)
+        local BTN = Instance.new("TextButton")
+        BTN.Name = "BTN"
+        BTN.Parent = buttonholder
+        BTN.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        BTN.BackgroundTransparency = 5.000
+        BTN.Position = UDim2.new(0.0874999985, 0, 0.049450554, 0)
+        BTN.Size = UDim2.new(0, 65, 0, 19)
+        BTN.ZIndex = 3
+        BTN.Font = Enum.Font.GothamMedium
+        BTN.Text = btntext
+        BTN.TextColor3 = Color3.fromRGB(139, 87, 87)
+        BTN.TextSize = 11.000
+        BTN.TextXAlignment = Enum.TextXAlignment.Left
 	end
 
-	return TabHandler
+	return ButtonHandler
 end
 
 return WindowTable
