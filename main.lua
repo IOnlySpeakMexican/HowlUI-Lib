@@ -1,7 +1,7 @@
 local WindowTable = {} -- We will be inserting Main Function in here
 
 function WindowTable:CreateWindow()
-	local ScreenGui = Instance.new("HowlUILIB")
+	local ScreenGui = Instance.new("ScreenGui")
 	local main = Instance.new("TextLabel")
 	local BCG = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
