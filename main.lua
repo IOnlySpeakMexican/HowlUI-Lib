@@ -1,6 +1,10 @@
 local WindowTable = {} 
 
 function WindowTable:CreateWindow(uiname)
+    if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
+        game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
+    end
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local main = Instance.new("TextLabel")
 	local BCG = Instance.new("Frame")
@@ -9,23 +13,13 @@ function WindowTable:CreateWindow(uiname)
 	local buttonholder = Instance.new("Frame")
 	local UICorner_2 = Instance.new("UICorner")
 	local detail_2 = Instance.new("Frame")
-	local lpbtn = Instance.new("TextButton")
 	local UIListLayout = Instance.new("UIListLayout")
-	local lpbtn_2 = Instance.new("TextButton")
-	local lpframe = Instance.new("Frame")
 	local UICorner_3 = Instance.new("UICorner")
-	local walkspeedval = Instance.new("TextBox")
-	local walkspeedbtn = Instance.new("TextButton")
-	local walkspeedbtn_2 = Instance.new("TextButton")
-	local walkspeedval_2 = Instance.new("TextBox")
 
 	ScreenGui.Parent = game:GetService("CoreGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.Name = "HowlUiLIb"
 
-    if game:GetService("CoreGui"):FindFirstChild("HowlUiLIb") then
-        game:GetService("CoreGui"):FindFirstChild("HowlUiLIb"):Destroy()
-    end
 
 	main.Name = "main"
 	main.Parent = ScreenGui
@@ -39,6 +33,8 @@ function WindowTable:CreateWindow(uiname)
 	main.TextColor3 = Color3.fromRGB(255, 255, 255)
 	main.TextSize = 14.000
 	main.TextXAlignment = Enum.TextXAlignment.Left
+    main.Active = true
+    main.Draggable = true
 
 	BCG.Name = "BCG"
 	BCG.Parent = main
@@ -93,6 +89,15 @@ function WindowTable:CreateWindow(uiname)
         BTN.TextColor3 = Color3.fromRGB(139, 87, 87)
         BTN.TextSize = 11.000
         BTN.TextXAlignment = Enum.TextXAlignment.Left
+        local btn1toggle = true
+        btn.MouseButton1Up:Connect(function()
+            if btn1toggle then
+                btn1toggle = false
+                btn.TextColor3 = Color.fromRGB(255, 160, 160)
+            else
+                btn1toggle = true
+                btn.TextColor3 = Color.fromRGB(139, 87, 87)
+        end)
 	end
 
 	return ButtonHandler
